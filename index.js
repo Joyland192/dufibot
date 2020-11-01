@@ -1,6 +1,6 @@
 const Discord = require(`discord.js`); // discord.js를 불러옴
 const client = new Discord.Client(); // 새로운 디스코드 클라이언트를 만듬
-const token = process.env.token;
+const token = process.env.token; //
 const prefix = '+'
 
 let allowedchannels = ['759689892174233611', '770211768063754300', '770613362446303252'];

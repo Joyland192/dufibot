@@ -1,6 +1,6 @@
 const Discord = require(`discord.js`); // discord.js를 불러옴
 const client = new Discord.Client(); // 새로운 디스코드 클라이언트를 만듬
-const token = process.env.token;
+const token = 'NzQ0MTMzMTg2NDAwODEzMTM2.XzeyCA.s7BZerNYXCV2Pag-TqWY78U9NjQ';//process.env.token;
 const prefix = '+'
 
 let allowedchannels = ['759689892174233611', '770211768063754300', '770613362446303252'];
@@ -92,10 +92,10 @@ client.on('message', (message) => {
 					message.edit(`미니다피를 굴리기 시작했다!\n\n미니다피를 굴리는 중...`)
 					}, 3000)
 					setTimeout(function() {
-					message.edit(`미니다피를 쓰다듬어주기 시작했다!\n\n미니다피를 굴리는 중...\n\n미니다피의 머리카락이 20 하락했다!`)
+					message.edit(`미니다피를 굴리기 시작했다!\n\n미니다피를 굴리는 중...\n\n미니다피의 머리카락이 20 하락했다!`)
 					}, 6000)
 					setTimeout(function() {
-					message.edit(`미니다피를 쓰다듬어주기 시작했다!\n\n미니다피를 굴리는 중...\n\n미니다피의 머리카락이 20 하락했다!\n\n어라..? 더이상 하락할 머리카락이 없다...️️️\n🤦‍♂️`)
+					message.edit(`미니다피를 굴리기 시작했다!\n\n미니다피를 굴리는 중...\n\n미니다피의 머리카락이 20 하락했다!\n\n어라..? 더이상 하락할 머리카락이 없다...️️️\n🤦‍♂️`)
 					}, 8300)
 				});
 			}

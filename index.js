@@ -103,6 +103,27 @@ client.on('message', (message) => {
 				message.channel.send(`앗, 미니다피가 도망갔다..`)
 			}
 		}
+		if (message.content === `${prefix}test`) {
+			message.channel.send('react this message').then(sentMessage => {
+				sentMessage.react('👍');
+				sentMessage.react('👎');
+				const filter = (reaction, user) => {
+					return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
+				};
+				sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+				.then(collected => {
+	  				const reaction = collected.first();
+	  				if (reaction.emoji.name === '👍') {
+						message.channel.send('1');
+	  				} else {
+						message.channel.send('2');
+	  				}
+				})
+				.catch(collected => {
+	  			
+				});
+			});
+		}
 	}
 	if (message.channel.id === '682856541463904256') {
 		if (message.author.id != '744133186400813136') {
@@ -111,6 +132,8 @@ client.on('message', (message) => {
 			const baborole = message.guild.roles.cache.find(role => role.name === '바보');
 			const satanrole = message.guild.roles.cache.find(role => role.name === '사탄');
 			const adrole = message.guild.roles.cache.find(role => role.name === '악동');
+			const coronarole = message.guild.roles.cache.find(role => role.name === '랜선백신');
+			const bangsongrole = message.guild.roles.cache.find(role => role.name === '방송실 전파방해장치');
 			if (message.content.startsWith (`${prefix}역할 부여`)) {
 				if (message.member.roles.cache.some(role => role.name === "교감")) {
 					message.author.givememberrole = args[3];
@@ -121,7 +144,7 @@ client.on('message', (message) => {
 				}
 			}
 			if (message.content === `${prefix}역할 리스트`) {
-				message.channel.send(`역할 리스트\n\n자유 신청역할\n\n떼껄룩\n미친놈\n바보\n사탄\n악동\n\n${prefix}역할 신청 (역할 이름) 이라고 말하시면 역할을 드립니다.`)
+				message.channel.send(`역할 리스트\n\n자유 신청역할\n\n떼껄룩\n미친놈\n바보\n사탄\n악동\n랜선 백신\n방송실 전파방해장치\n\n${prefix}역할 신청 (역할 이름) 이라고 말하시면 역할을 드립니다.`)
 			}
 			if (message.content.startsWith (`${prefix}역할 신청`)) {
 				message.author.givemerole = message.content.slice(`${prefix}역할 신청 `.length);
@@ -157,6 +180,20 @@ client.on('message', (message) => {
 					if (!message.member.roles.cache.some(role => role.name === "악동")) {
 						message.member.roles.add(adrole);
 						roleroom.send(`<@${message.author.id}> 악동? 도대체 왜...`);
+					} else {
+						roleroom.send(`<@${message.author.id}> 이미 그 역할을 가지고 있습니다.`)
+					}
+				} else if (message.author.givemerole === '랜선백신') {
+					if (!message.member.roles.cache.some(role => role.name === "랜선백신")) {
+						message.member.roles.add(coronarole);
+						roleroom.send(`<@${message.author.id}> 코로나 백신 접종`);
+					} else {
+						roleroom.send(`<@${message.author.id}> 이미 그 역할을 가지고 있습니다.`)
+					}
+				} else if (message.author.givemerole === '방송실 전파방해장치') {
+					if (!message.member.roles.cache.some(role => role.name === "방송실 전파방해장치")) {
+						message.member.roles.add(bangsongrole);
+						roleroom.send(`<@${message.author.id}> 방송 알림이 안갑니다`);
 					} else {
 						roleroom.send(`<@${message.author.id}> 이미 그 역할을 가지고 있습니다.`)
 					}

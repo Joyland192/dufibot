@@ -139,141 +139,151 @@ client.on('message', (message) => {
 		}
 		if (message.content === `${prefix}다피 퀴즈`) {
 			message.author.dafiquiz = Math.floor(Math.random() * 5) + 1;
-			if (message.author.dafiquiz == 1) {
-				message.channel.send('다피쿤은 바보인가요?').then(sentMessage => {
-					sentMessage.react('⭕');
-					sentMessage.react('❌');
-					const filter = (reaction, user) => {
-						return ['⭕', '❌'].includes(reaction.emoji.name) && user.id === message.author.id;
-					};
-					sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-					.then(collected => {
-						const reaction = collected.first();
-						if (reaction.emoji.name === '⭕') {
-							message.channel.send('정답!');
-						} else {
-							message.channel.send('정답!');
-						}
-					})
-					.catch(collected => {
-					  
+			if (message.author.doingquiz = 0) {
+				message.author.doingquiz = 1;
+				if (message.author.dafiquiz == 1) {
+					message.channel.send('다피쿤은 바보인가요?').then(sentMessage => {
+						sentMessage.react('⭕');
+						sentMessage.react('❌');
+						const filter = (reaction, user) => {
+							return ['⭕', '❌'].includes(reaction.emoji.name) && user.id === message.author.id;
+						};
+						sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+						.then(collected => {
+							const reaction = collected.first();
+							if (reaction.emoji.name === '⭕') {
+								message.channel.send('정답!');
+							} else {
+								message.channel.send('정답!');
+							}
+						})
+						.catch(collected => {
+							
+							message.author.doingquiz = 0;
+						});
 					});
-				});
-			} else if (message.author.dafiquiz == 2) {
-				message.channel.send('다피쿤의 머리카락 수는?\n1 : 0\n2 : 3\n3 : 4800\n4 : 20억\n5 : 그냥 풍성충').then(sentMessage => {
-					sentMessage.react('1️⃣');
-					sentMessage.react('2️⃣');
-					sentMessage.react('3️⃣');
-					sentMessage.react('4️⃣');
-					sentMessage.react('5️⃣');
-					const filter = (reaction, user) => {
-						return ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
-					};
-					sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-					.then(collected => {
-						const reaction = collected.first();
-						if (reaction.emoji.name === '1️⃣') {
-							message.channel.send('정답!');
-						} else if (reaction.emoji.name === '2️⃣') {
-							message.channel.send('땡!');
-						} else if (reaction.emoji.name === '3️⃣') {
-							message.channel.send('땡!');
-						} else if (reaction.emoji.name === '4️⃣') {
-							message.channel.send('땡!');
-						} else {
-							message.channel.send('정답!');
-						}
-					})
-					.catch(collected => {
+				} else if (message.author.dafiquiz == 2) {
+					message.channel.send('다피쿤의 머리카락 수는?\n1 : 0\n2 : 3\n3 : 4800\n4 : 20억\n5 : 그냥 풍성충').then(sentMessage => {
+						sentMessage.react('1️⃣');
+						sentMessage.react('2️⃣');
+						sentMessage.react('3️⃣');
+						sentMessage.react('4️⃣');
+						sentMessage.react('5️⃣');
+						const filter = (reaction, user) => {
+							return ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+						};
+						sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+						.then(collected => {
+							const reaction = collected.first();
+							if (reaction.emoji.name === '1️⃣') {
+								message.channel.send('정답!');
+							} else if (reaction.emoji.name === '2️⃣') {
+								message.channel.send('땡!');
+							} else if (reaction.emoji.name === '3️⃣') {
+								message.channel.send('땡!');
+							} else if (reaction.emoji.name === '4️⃣') {
+								message.channel.send('땡!');
+							} else {
+								message.channel.send('정답!');
+							}
+						})
+						.catch(collected => {
+							message.author.doingquiz = 0;
+						});
 					});
-				});
-			} else if (message.author.dafiquiz == 3) {
-				message.channel.send('다피쿤의 얼불춤 실력 순위는?\n1 : 뒤에서 1위\n2 : 상위 80%\n3 : 상위 30%\n4 : 1위\n5 : 0위').then(sentMessage => {
-					sentMessage.react('1️⃣');
-					sentMessage.react('2️⃣');
-					sentMessage.react('3️⃣');
-					sentMessage.react('4️⃣');
-					sentMessage.react('5️⃣');
-					const filter = (reaction, user) => {
-						return ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
-					};
-					sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-					.then(collected => {
-						const reaction = collected.first();
-						if (reaction.emoji.name === '1️⃣') {
-							message.channel.send('땡!');
-						} else if (reaction.emoji.name === '2️⃣') {
-							message.channel.send('땡!');
-						} else if (reaction.emoji.name === '3️⃣') {
-							message.channel.send('땡!');
-						} else if (reaction.emoji.name === '4️⃣') {
-							message.channel.send('땡!');
-						} else {
-							message.channel.send('정답!');
-						}
-					})
-					.catch(collected => {
-						message.channel.send('정답은 5번이였습니다!');
+				} else if (message.author.dafiquiz == 3) {
+					message.channel.send('다피쿤의 얼불춤 실력 순위는?\n1 : 뒤에서 1위\n2 : 상위 80%\n3 : 상위 30%\n4 : 1위\n5 : 0위').then(sentMessage => {
+						sentMessage.react('1️⃣');
+						sentMessage.react('2️⃣');
+						sentMessage.react('3️⃣');
+						sentMessage.react('4️⃣');
+						sentMessage.react('5️⃣');
+						const filter = (reaction, user) => {
+							return ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+						};
+						sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+						.then(collected => {
+							const reaction = collected.first();
+							if (reaction.emoji.name === '1️⃣') {
+								message.channel.send('땡!');
+							} else if (reaction.emoji.name === '2️⃣') {
+								message.channel.send('땡!');
+							} else if (reaction.emoji.name === '3️⃣') {
+								message.channel.send('땡!');
+							} else if (reaction.emoji.name === '4️⃣') {
+								message.channel.send('땡!');
+							} else {
+								message.channel.send('정답!');
+							}
+						})
+						.catch(collected => {
+							message.channel.send('정답은 5번이였습니다!');
+							message.author.doingquiz = 0;
+						});
 					});
-				});
-			} else if (message.author.dafiquiz == 4) {
-				message.channel.send('모다피 대학교 서버의 서버사진은?\n1 : 없음\n2 : 모다피\n3 : 피슈터 (Peashooter)\n4 : 다피쿤\n5 : 감자').then(sentMessage => {
-					sentMessage.react('1️⃣');
-					sentMessage.react('2️⃣');
-					sentMessage.react('3️⃣');
-					sentMessage.react('4️⃣');
-					sentMessage.react('5️⃣');
-					const filter = (reaction, user) => {
-						return ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
-					};
-					sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-					.then(collected => {
-						const reaction = collected.first();
-						if (reaction.emoji.name === '1️⃣') {
-							message.channel.send('땡!');
-						} else if (reaction.emoji.name === '2️⃣') {
-							message.channel.send('정답!');
-						} else if (reaction.emoji.name === '3️⃣') {
-							message.channel.send('땡!');
-						} else if (reaction.emoji.name === '4️⃣') {
-							message.channel.send('땡!');
-						} else {
-							message.channel.send('땡!');
-						}
-					})
-					.catch(collected => {
-						message.channel.send('정답은 2번이였습니다!');
+				} else if (message.author.dafiquiz == 4) {
+					message.channel.send('모다피 대학교 서버의 서버사진은?\n1 : 없음\n2 : 모다피\n3 : 피슈터 (Peashooter)\n4 : 다피쿤\n5 : 감자').then(sentMessage => {
+						sentMessage.react('1️⃣');
+						sentMessage.react('2️⃣');
+						sentMessage.react('3️⃣');
+						sentMessage.react('4️⃣');
+						sentMessage.react('5️⃣');
+						const filter = (reaction, user) => {
+							return ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+						};
+						sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+						.then(collected => {
+							const reaction = collected.first();
+							if (reaction.emoji.name === '1️⃣') {
+								message.channel.send('땡!');
+							} else if (reaction.emoji.name === '2️⃣') {
+								message.channel.send('정답!');
+							} else if (reaction.emoji.name === '3️⃣') {
+								message.channel.send('땡!');
+							} else if (reaction.emoji.name === '4️⃣') {
+								message.channel.send('땡!');
+							} else {
+								message.channel.send('땡!');
+							}
+						})
+						.catch(collected => {
+							message.channel.send('정답은 2번이였습니다!');
+							message.author.doingquiz = 0;
+						});
 					});
-				});
-			} else if (message.author.dafiquiz == 5) {
-				message.channel.send('다피쿤의 전역일은?\n1 : 평생 안함\n2 : 2020년 12월 31일\n3 : 2021년 2월 21일\n4 : 2022년 2월 21일\n5 : 2022년 4월 4일').then(sentMessage => {
-					sentMessage.react('1️⃣');
-					sentMessage.react('2️⃣');
-					sentMessage.react('3️⃣');
-					sentMessage.react('4️⃣');
-					sentMessage.react('5️⃣');
-					const filter = (reaction, user) => {
-						return ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
-					};
-					sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-					.then(collected => {
-						const reaction = collected.first();
-						if (reaction.emoji.name === '1️⃣') {
-							message.channel.send('땡!');
-						} else if (reaction.emoji.name === '2️⃣') {
-							message.channel.send('땡!');
-						} else if (reaction.emoji.name === '3️⃣') {
-							message.channel.send('땡!');
-						} else if (reaction.emoji.name === '4️⃣') {
-							message.channel.send('땡!');
-						} else {
-							message.channel.send('정답!');
-						}
-					})
-					.catch(collected => {
-						message.channel.send('정답은 5번이였습니다!');
+				} else if (message.author.dafiquiz == 5) {
+					message.channel.send('다피쿤의 전역일은?\n1 : 평생 안함\n2 : 2020년 12월 31일\n3 : 2021년 2월 21일\n4 : 2022년 2월 21일\n5 : 2022년 4월 4일').then(sentMessage => {
+						sentMessage.react('1️⃣');
+						sentMessage.react('2️⃣');
+						sentMessage.react('3️⃣');
+						sentMessage.react('4️⃣');
+						sentMessage.react('5️⃣');
+						const filter = (reaction, user) => {
+							return ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+						};
+						sentMessage.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+						.then(collected => {
+							const reaction = collected.first();
+							if (reaction.emoji.name === '1️⃣') {
+								message.channel.send('땡!');
+							} else if (reaction.emoji.name === '2️⃣') {
+								message.channel.send('땡!');
+							} else if (reaction.emoji.name === '3️⃣') {
+								message.channel.send('땡!');
+							} else if (reaction.emoji.name === '4️⃣') {
+								message.channel.send('땡!');
+							} else {
+								message.channel.send('정답!');
+							}
+						})
+						.catch(collected => {
+							message.channel.send('정답은 5번이였습니다!');
+							message.author.doingquiz = 0;
+						});
 					});
-				});
+				}
+			} else if (message.author.doingquiz == 1) {
+				message.channel.send(`<@${message.author.id}> 이미 진행중인 퀴즈가 있습니다!`)
 			}
 		}
 	}

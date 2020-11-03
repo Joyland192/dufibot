@@ -182,10 +182,13 @@ client.on('message', (message) => {
 								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '2️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '3️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '4️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else {
 								message.channel.send('정답!');
 								message.author.doingquiz = 0;
@@ -210,12 +213,16 @@ client.on('message', (message) => {
 							const reaction = collected.first();
 							if (reaction.emoji.name === '1️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '2️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '3️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '4️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else {
 								message.channel.send('정답!');
 								message.author.doingquiz = 0;
@@ -241,15 +248,19 @@ client.on('message', (message) => {
 							const reaction = collected.first();
 							if (reaction.emoji.name === '1️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '2️⃣') {
 								message.channel.send('정답!');
 								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '3️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '4️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							}
 						})
 						.catch(collected => {
@@ -272,12 +283,16 @@ client.on('message', (message) => {
 							const reaction = collected.first();
 							if (reaction.emoji.name === '1️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '2️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '3️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else if (reaction.emoji.name === '4️⃣') {
 								message.channel.send('땡!');
+								message.author.doingquiz = 0;
 							} else {
 								message.channel.send('정답!');
 								message.author.doingquiz = 0;

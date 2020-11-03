@@ -139,7 +139,7 @@ client.on('message', (message) => {
 		}
 		if (message.content === `${prefix}다피 퀴즈`) {
 			message.author.dafiquiz = Math.floor(Math.random() * 5) + 1;
-			if (message.author.doingquiz = 0) {
+			if (message.author.doingquiz == 0) {
 				message.author.doingquiz = 1;
 				if (message.author.dafiquiz == 1) {
 					message.channel.send('다피쿤은 바보인가요?').then(sentMessage => {

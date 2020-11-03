@@ -7,6 +7,8 @@ let allowedchannels = ['759689892174233611', '770211768063754300', '770613362446
 
 client.once('ready', () => {
 	console.log("Bot Login.");
+	const dufimanageroom = client.channels.cache.get('770211768063754300');
+	dufimanageroom.send('**온라인!**')
 	client.user.setActivity(`${prefix}명령어                                `);
 });
 
@@ -70,7 +72,7 @@ client.on('message', (message) => {
 			}
 		}
 		if (message.content === `${prefix}다피 키우기`) {
-			message.author.dafigrow = Math.floor(Math.random() * 3) + 1;
+			message.author.dafigrow = Math.floor(Math.random() * 4) + 1;
 			if (message.author.dafigrow == 1) {
 				message.channel.send(`미니다피를 쓰다듬어주기 시작했다!`)
 				.then (message => {
@@ -102,6 +104,17 @@ client.on('message', (message) => {
 			if (message.author.dafigrow == 3) {
 				message.channel.send(`앗, 미니다피가 도망갔다..`)
 			}
+			if (message.author.dafigrow == 4) {
+				message.channel.send(`미니다피의 머리가 자라기 시작했다!`)
+				.then (message => {
+					setTimeout(function() {
+					message.edit(`미니다피의 머리가 자라기 시작했다!\n\n머리가 자라는 중...`)
+					}, 3000)
+					setTimeout(function() {
+					message.edit(`미니다피의 머리가 자라기 시작했다!\n\n머리가 자라는 중...\n\n미니다피의 머리카락이 400 상승했다!`)
+					}, 6000)
+				});
+			}
 		}
 		if (message.content === `${prefix}test`) {
 			message.channel.send('react this message').then(sentMessage => {
@@ -124,7 +137,7 @@ client.on('message', (message) => {
 				});
 			});
 		}
-		if (message.content === `${prefix}다피 키우기`) {
+		if (message.content === `${prefix}다피 퀴즈`) {
 			message.author.dafiquiz = Math.floor(Math.random() * 5) + 1;
 			if (message.author.dafiquiz == 1) {
 				message.channel.send('다피쿤은 바보인가요?').then(sentMessage => {
